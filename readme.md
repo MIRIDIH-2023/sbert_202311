@@ -1,10 +1,11 @@
-# run sbert
+# Design Template Recommendation With SBERT
 
+## how to run:
 ```
 !python main.py --is_save=True --is_evaluate=True --save_path=None --folder_path=None --data_path=None --extract_path=None --num_epoch=7 --batch_size=64
 ```
 
-##params: 
+## params: 
 - --is_save: 저장 여부 (default: True)
 - --is_evaluate: 평가 여부 (default: True)
 - --save_path: 저장 경로 (default: None)
