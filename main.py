@@ -7,6 +7,7 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+import argparse
 
 def load_data(config):
     folder_path = config.folder_path
@@ -83,15 +84,21 @@ def main(config):
 
 
 if __name__=="__main__":
+
+    # ArgumentParser 생성
+    parser = argparse.ArgumentParser(description='설명을 입력하세요')
     
-    class config:
-        is_save = True
-        is_evaluate = True
-        save_path = None
-        folder_path = None
-        data_path = None
-        extract_path = None
-        num_epoch = 7
-        batch_size = 64
+    # 각각의 인자값 추가
+    parser.add_argument('--is_save', type=bool, default=True, help='저장 여부')
+    parser.add_argument('--is_evaluate', type=bool, default=True, help='평가 여부')
+    parser.add_argument('--save_path', type=str, default=None, help='저장 경로')
+    parser.add_argument('--folder_path', type=str, default=None, help='폴더 경로')
+    parser.add_argument('--data_path', type=str, default=None, help='데이터 경로')
+    parser.add_argument('--extract_path', type=str, default=None, help='추출 경로')
+    parser.add_argument('--num_epoch', type=int, default=7, help='에폭 수')
+    parser.add_argument('--batch_size', type=int, default=64, help='배치 크기')
     
-    main(config)
+    # 입력받은 인자값들을 args에 저장
+    args = parser.parse_args()
+        
+    main(args)
